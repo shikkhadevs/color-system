@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --font-sans: "Inter", "system-ui", "sans-serif";
@@ -14,6 +15,7 @@
   --color-brand-blue-700: #1967D2;
   --color-brand-blue-800: #185ABC;
   --color-brand-blue-900: #174EA6;
+  --color-brand-blue-950: #0D3B7A;
 
   --color-brand-red-50: #FCE8E6;
   --color-brand-red-100: #FAD2CF;
@@ -25,6 +27,7 @@
   --color-brand-red-700: #C5221F;
   --color-brand-red-800: #B31412;
   --color-brand-red-900: #A50E0E;
+  --color-brand-red-950: #7A0808;
 
   --color-brand-yellow-50: #FEF7E0;
   --color-brand-yellow-100: #FEF0B8;
@@ -36,6 +39,7 @@
   --color-brand-yellow-700: #F29900;
   --color-brand-yellow-800: #EA8600;
   --color-brand-yellow-900: #E37400;
+  --color-brand-yellow-950: #C45800;
 
   --color-brand-green-50: #E6F4EA;
   --color-brand-green-100: #CEEAD6;
@@ -47,6 +51,7 @@
   --color-brand-green-700: #188038;
   --color-brand-green-800: #137333;
   --color-brand-green-900: #0D652D;
+  --color-brand-green-950: #064A1F;
 
   --color-surface-50: #F8FAFC;
   --color-surface-100: #F1F5F9;
@@ -59,4 +64,197 @@
   --color-surface-800: #1E293B;
   --color-surface-900: #0F172A;
   --color-surface-950: #020617;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+}
+
+/* ===== Scroll-Triggered Reveal Animations ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children in grids */
+.reveal-children>* {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-children.visible>* {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-children.visible>*:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.reveal-children.visible>*:nth-child(2) {
+  transition-delay: 40ms;
+}
+
+.reveal-children.visible>*:nth-child(3) {
+  transition-delay: 80ms;
+}
+
+.reveal-children.visible>*:nth-child(4) {
+  transition-delay: 120ms;
+}
+
+.reveal-children.visible>*:nth-child(5) {
+  transition-delay: 160ms;
+}
+
+.reveal-children.visible>*:nth-child(6) {
+  transition-delay: 200ms;
+}
+
+.reveal-children.visible>*:nth-child(7) {
+  transition-delay: 240ms;
+}
+
+.reveal-children.visible>*:nth-child(8) {
+  transition-delay: 280ms;
+}
+
+.reveal-children.visible>*:nth-child(9) {
+  transition-delay: 320ms;
+}
+
+.reveal-children.visible>*:nth-child(10) {
+  transition-delay: 360ms;
+}
+
+.reveal-children.visible>*:nth-child(11) {
+  transition-delay: 400ms;
+}
+
+/* ===== Active Nav Link (Scroll Spy) ===== */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link.active {
+  color: var(--color-brand-blue-600) !important;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-brand-blue-500);
+}
+
+/* Mobile active nav */
+.mobile-nav-link.active {
+  color: var(--color-brand-blue-600) !important;
+  background: var(--color-brand-blue-50);
+  border-radius: 8px;
+}
+
+/* ===== Toast Animation ===== */
+#toast {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s ease;
+}
+
+#toast.toast-enter {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+#toast.toast-exit {
+  transform: translate(-50%, 20px);
+  opacity: 0;
+}
+
+/* ===== Scroll Progress Bar ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-brand-blue-500), var(--color-brand-green-500), var(--color-brand-yellow-500));
+  z-index: 9999;
+  transition: width 0.05s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+
+
+/* ===== Search Bar ===== */
+.color-search:focus {
+  border-color: var(--color-brand-blue-400);
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.15);
+  width: 260px;
+}
+
+.palette-group.filtered-out {
+  display: none;
+}
+
+.swatch.filtered-out {
+  display: none;
+}
+
+/* ===== Export Dropdown ===== */
+.export-wrapper {
+  position: relative;
+}
+
+/* Animation-only — open state toggled by JS */
+.export-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.export-menu.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal,
+  .reveal-children>*,
+  .swatch,
+  .back-to-top,
+  #toast {
+    transition: none !important;
+  }
+
+  .reveal,
+  .reveal-children>* {
+    opacity: 1;
+    transform: none;
+  }
 }

@@ -28,7 +28,8 @@
   <meta property="twitter:image" content="/og-image.png">
 </head>
 
-<body class="bg-surface-50 text-surface-900 antialiased selection:bg-brand-blue-100 selection:text-brand-blue-900">
+<body
+  class="bg-surface-50 text-surface-900 antialiased selection:bg-brand-blue-100 selection:text-brand-blue-900 dark:bg-surface-950 dark:text-surface-100">
 
   <!-- Toast Notification -->
   <div id="toast"
@@ -39,27 +40,36 @@
     <span id="toast-msg">Class copied to clipboard!</span>
   </div>
 
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
   <!-- Navigation -->
-  <nav class="bg-white border-b border-surface-200 px-6 py-4 sticky top-0 z-40 bg-opacity-90 backdrop-blur-md">
+  <nav
+    class="bg-white/70 dark:bg-surface-900/60 backdrop-blur-xl saturate-150 border-b border-white/20 dark:border-surface-800/60 px-6 py-4 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div class="flex items-center gap-2 font-bold text-xl">
         <!-- Mini Logo -->
-        <div class="relative w-6 h-6 shrink-0 mr-1">
-          <div class="absolute top-0 left-0 w-3 h-3 rounded-full bg-brand-yellow-500 transform -translate-y-0.5"></div>
-          <div class="absolute top-1.5 right-0 w-3.5 h-3.5 rounded-full bg-brand-red-500 transform translate-x-0.5">
-          </div>
-          <div class="absolute bottom-0 left-0 w-4 h-4 rounded-tl bg-brand-blue-500"></div>
-          <div class="absolute bottom-0 right-0 w-4 h-3.5 rounded-br bg-brand-green-500 transform translate-y-0.5">
-          </div>
-        </div>
+        <img src="/fevicon.svg" class="w-8 h-8 shrink-0 mr-1" alt="Shikkha.dev Logo">
         <span>Shikkha<span class="text-surface-400">.dev</span></span>
       </div>
-      <div class="hidden md:flex space-x-8 text-sm font-semibold text-surface-500 items-center">
-        <a href="#rules" class="hover:text-brand-blue-600 transition-colors">Usage Rules</a>
-        <a href="#palette" class="hover:text-brand-blue-600 transition-colors">Full Palette</a>
+      <div class="hidden md:flex space-x-8 text-sm font-semibold text-surface-500 dark:text-surface-400 items-center">
+        <a href="#rules" class="nav-link hover:text-brand-blue-600" data-section="rules">Usage Rules</a>
+        <a href="#palette" class="nav-link hover:text-brand-blue-600" data-section="palette">Full Palette</a>
         <a href="#example"
-          class="bg-brand-blue-50 text-brand-blue-600 px-4 py-2 rounded-lg hover:bg-brand-blue-100 transition-colors">Live
-          Example</a>
+          class="nav-link bg-brand-blue-50 text-brand-blue-600 px-4 py-2 rounded-lg hover:bg-brand-blue-100 transition-colors"
+          data-section="example">Live Example</a>
+        <!-- Dark Mode Toggle -->
+        <button id="theme-toggle"
+          class="p-2 rounded-lg hover:bg-surface-100 dark:hover:bg-surface-800 transition-all duration-300 hover:scale-110 group"
+          aria-label="Toggle theme">
+          <svg class="w-5 h-5 theme-toggle transition-colors duration-300 group-hover:text-brand-blue-500" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path class="sun-icon hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l.707.707M6.343 6.343l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+            <path class="moon-icon block dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -72,12 +82,16 @@
     </div>
 
     <!-- Mobile Menu Container -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-surface-100 bg-white/95 backdrop-blur-md">
-      <div class="flex flex-col p-4 space-y-4 text-sm font-semibold text-surface-600">
-        <a href="#rules" class="mobile-nav-link hover:text-brand-blue-600 transition-colors">Usage Rules</a>
-        <a href="#palette" class="mobile-nav-link hover:text-brand-blue-600 transition-colors">Full Palette</a>
+    <div id="mobile-menu"
+      class="hidden md:hidden border-t border-surface-100 dark:border-surface-800 bg-white/95 dark:bg-surface-900/95 backdrop-blur-md">
+      <div class="flex flex-col p-4 space-y-4 text-sm font-semibold text-surface-600 dark:text-surface-400">
+        <a href="#rules" class="mobile-nav-link hover:text-brand-blue-600 transition-colors" data-section="rules">Usage
+          Rules</a>
+        <a href="#palette" class="mobile-nav-link hover:text-brand-blue-600 transition-colors"
+          data-section="palette">Full Palette</a>
         <a href="#example"
-          class="mobile-nav-link bg-brand-blue-50 text-brand-blue-600 px-4 py-3 rounded-xl hover:bg-brand-blue-100 transition-colors">Live
+          class="mobile-nav-link bg-brand-blue-50 text-brand-blue-600 px-4 py-3 rounded-xl hover:bg-brand-blue-100 transition-colors"
+          data-section="example">Live
           Example</a>
       </div>
     </div>
@@ -87,62 +101,76 @@
 
     <!-- SECTION 1: USAGE STRATEGY -->
     <section id="rules" class="mb-16 md:mb-24">
-      <div class="max-w-3xl mb-8 md:mb-12 text-center md:text-left">
+      <div class="max-w-3xl mb-8 md:mb-12 text-center md:text-left reveal">
         <h2 class="text-2xl md:text-3xl font-extrabold mb-4 tracking-tight">The Usage Strategy</h2>
         <p class="text-surface-500 text-base md:text-lg">We've introduced a <span
-            class="font-mono text-sm bg-surface-200 px-1 rounded">surface</span> scale for UI structure. This ensures
+            class="font-mono text-sm bg-surface-200 px-1 rounded dark:bg-surface-800">surface</span> scale for UI
+          structure. This ensures
           our brand colors (Blue, Red, Yellow, Green) are reserved for meaning and interaction.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal-children">
         <!-- Primary Action -->
         <div
-          class="bg-white p-6 rounded-2xl shadow-sm border border-surface-200 group hover:border-brand-blue-200 transition-colors">
+          class="bg-white dark:bg-surface-900 p-6 rounded-2xl shadow-sm border border-surface-200 dark:border-surface-800 group hover:border-brand-blue-200 dark:hover:border-brand-blue-800 transition-colors">
           <div
-            class="w-12 h-12 bg-brand-blue-500 rounded-xl mb-4 shadow-lg shadow-brand-blue-100 swatch flex items-center justify-center text-white"
+            class="w-12 h-12 bg-brand-blue-500 rounded-xl mb-4 shadow-lg hover:shadow-none shadow-brand-blue-100 dark:shadow-brand-blue-900 swatch flex items-center justify-center text-white"
             data-class="bg-brand-blue-500" data-hex="#4285F4">
-            <span class="font-mono text-xs opacity-0 group-hover:opacity-100">500</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
+              </path>
+            </svg>
           </div>
-          <h3 class="font-bold text-lg mb-2 text-surface-800">Primary & Brand</h3>
+          <h3 class="font-bold text-lg mb-2 text-surface-800 dark:text-surface-100">Primary & Brand</h3>
           <p class="text-sm text-surface-500 leading-relaxed">Use <b>Blue-500</b> for primary buttons and active links.
             Use <b>Blue-50</b> for hover backgrounds.</p>
         </div>
 
         <!-- Success -->
         <div
-          class="bg-white p-6 rounded-2xl shadow-sm border border-surface-200 group hover:border-brand-green-200 transition-colors">
+          class="bg-white dark:bg-surface-900 p-6 rounded-2xl shadow-sm border border-surface-200 dark:border-surface-800 group hover:border-brand-green-200 dark:hover:border-brand-green-800 transition-colors">
           <div
-            class="w-12 h-12 bg-brand-green-500 rounded-xl mb-4 shadow-lg shadow-brand-green-100 swatch flex items-center justify-center text-white"
+            class="w-12 h-12 bg-brand-green-500 rounded-xl mb-4 shadow-lg hover:shadow-none shadow-brand-green-100 dark:shadow-brand-green-900 swatch flex items-center justify-center text-white"
             data-class="bg-brand-green-500" data-hex="#34A853">
-            <span class="font-mono text-xs opacity-0 group-hover:opacity-100">500</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+              </path>
+            </svg>
           </div>
-          <h3 class="font-bold text-lg mb-2 text-surface-800">Success & Growth</h3>
+          <h3 class="font-bold text-lg mb-2 text-surface-800 dark:text-surface-100">Success & Growth</h3>
           <p class="text-sm text-surface-500 leading-relaxed">Use <b>Green-500</b> for completion states, verification
             badges, and positive trends.</p>
         </div>
 
         <!-- Warning -->
         <div
-          class="bg-white p-6 rounded-2xl shadow-sm border border-surface-200 group hover:border-brand-yellow-200 transition-colors">
+          class="bg-white dark:bg-surface-900 p-6 rounded-2xl shadow-sm border border-surface-200 dark:border-surface-800 group hover:border-brand-yellow-200 dark:hover:border-brand-yellow-800 transition-colors">
           <div
-            class="w-12 h-12 bg-brand-yellow-500 rounded-xl mb-4 shadow-lg shadow-brand-yellow-100 swatch flex items-center justify-center text-white"
+            class="w-12 h-12 bg-brand-yellow-500 rounded-xl mb-4 shadow-lg hover:shadow-none shadow-brand-yellow-100 dark:shadow-brand-yellow-900 swatch flex items-center justify-center text-white"
             data-class="bg-brand-yellow-500" data-hex="#FBBC05">
-            <span class="font-mono text-xs opacity-0 group-hover:opacity-100">500</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+              </path>
+            </svg>
           </div>
-          <h3 class="font-bold text-lg mb-2 text-surface-800">Attention & Premium</h3>
+          <h3 class="font-bold text-lg mb-2 text-surface-800 dark:text-surface-100">Attention & Premium</h3>
           <p class="text-sm text-surface-500 leading-relaxed">Use <b>Yellow-500</b> for warnings, "Pro" features, or
             items requiring user attention.</p>
         </div>
 
         <!-- Surface/Neutral -->
         <div
-          class="bg-white p-6 rounded-2xl shadow-sm border border-surface-200 group hover:border-surface-300 transition-colors">
+          class="bg-white dark:bg-surface-900 p-6 rounded-2xl shadow-sm border border-surface-200 dark:border-surface-800 group hover:border-surface-300 dark:hover:border-surface-700 transition-colors">
           <div
-            class="w-12 h-12 bg-surface-900 rounded-xl mb-4 shadow-lg shadow-surface-200 swatch flex items-center justify-center text-white"
+            class="w-12 h-12 bg-surface-900 rounded-xl mb-4 shadow-lg hover:shadow-none shadow-surface-200 dark:shadow-surface-600 swatch flex items-center justify-center text-white dark:hover:border dark:hover:border-surface-700"
             data-class="bg-surface-900" data-hex="#0F172A">
-            <span class="font-mono text-xs opacity-0 group-hover:opacity-100">900</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h12M4 18h8"></path>
+            </svg>
           </div>
-          <h3 class="font-bold text-lg mb-2 text-surface-800">Structure & Text</h3>
+          <h3 class="font-bold text-lg mb-2 text-surface-800 dark:text-surface-100">Structure & Text</h3>
           <p class="text-sm text-surface-500 leading-relaxed">Use <b>Surface-50 to 900</b> for everything else. Text
             should be 600-900, never pure black.</p>
         </div>
@@ -150,15 +178,104 @@
     </section>
 
     <!-- SECTION 2: THE PALETTE GRID -->
-    <div id="palette-container" class="space-y-10">
+    <section id="palette" class="space-y-10 my-10">
+
+      <!-- Palette Header with Format Toggle, Search & Export -->
+      <div class="reveal relative z-10 flex flex-col gap-4 mb-2">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">The Palette Grid</h2>
+            <p class="text-surface-500 text-sm mt-1">Click any swatch to copy. Use the toggle to change format.</p>
+          </div>
+          <div
+            class="format-toggle flex bg-white/80 dark:bg-surface-900/80 backdrop-blur-md border border-surface-200 dark:border-surface-800 rounded-xl p-1 shadow-sm gap-1">
+            <button
+              class="format-btn active text-xs font-bold px-3 py-1.5 rounded-lg transition-all duration-200 [&.active]:bg-brand-blue-500 [&.active]:text-white [&.active]:shadow-[0_2px_8px_rgba(66,133,244,0.3)]"
+              data-format="hex">HEX</button>
+            <button
+              class="format-btn text-xs font-bold px-3 py-1.5 rounded-lg text-surface-500 dark:text-surface-400 transition-all duration-200 [&.active]:bg-brand-blue-500 [&.active]:text-white [&.active]:shadow-[0_2px_8px_rgba(66,133,244,0.3)]"
+              data-format="rgb">RGB</button>
+            <button
+              class="format-btn text-xs font-bold px-3 py-1.5 rounded-lg text-surface-500 dark:text-surface-400 transition-all duration-200 [&.active]:bg-brand-blue-500 [&.active]:text-white [&.active]:shadow-[0_2px_8px_rgba(66,133,244,0.3)]"
+              data-format="hsl">HSL</button>
+            <button
+              class="format-btn text-xs font-bold px-3 py-1.5 rounded-lg text-surface-500 dark:text-surface-400 transition-all duration-200 [&.active]:bg-brand-blue-500 [&.active]:text-white [&.active]:shadow-[0_2px_8px_rgba(66,133,244,0.3)]"
+              data-format="tw">TW</button>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <!-- Search -->
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-surface-400 pointer-events-none"
+              fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+              </path>
+            </svg>
+            <input id="color-search" type="text"
+              class="color-search bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-[10px] py-2 pr-3 pl-9 text-[13px] text-surface-900 dark:text-surface-100 placeholder:text-surface-400 dark:placeholder:text-surface-500 outline-none w-[200px] transition-all duration-200 focus:w-[260px] focus:border-brand-blue-400 focus:ring-3 focus:ring-brand-blue-400/15"
+              placeholder="Search colors...">
+          </div>
+          <!-- Export -->
+          <div class="export-wrapper">
+            <button id="export-btn"
+              class="flex items-center gap-1.5 px-3.5 py-1.5 text-[13px] font-semibold rounded-[10px] border-[1.5px] border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-800 text-surface-700 dark:text-surface-300 cursor-pointer transition-all duration-200 hover:border-brand-blue-400 hover:text-brand-blue-600 dark:hover:text-brand-blue-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                </path>
+              </svg>
+              Export
+            </button>
+            <div id="export-menu"
+              class="export-menu bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl shadow-[0_12px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.5)] p-1.5 min-w-[180px]">
+              <button data-export="css"
+                class="flex items-center gap-2 w-full px-3 py-2 text-[13px] text-surface-700 dark:text-surface-300 rounded-lg border-none bg-transparent cursor-pointer transition-colors duration-150 hover:bg-brand-blue-50 hover:text-brand-blue-600 dark:hover:bg-brand-blue-500/15 dark:hover:text-brand-blue-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+                CSS Variables
+              </button>
+              <button data-export="json"
+                class="flex items-center gap-2 w-full px-3 py-2 text-[13px] text-surface-700 dark:text-surface-300 rounded-lg border-none bg-transparent cursor-pointer transition-colors duration-150 hover:bg-brand-blue-50 hover:text-brand-blue-600 dark:hover:bg-brand-blue-500/15 dark:hover:text-brand-blue-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z"></path>
+                </svg>
+                JSON
+              </button>
+              <button data-export="tailwind"
+                class="flex items-center gap-2 w-full px-3 py-2 text-[13px] text-surface-700 dark:text-surface-300 rounded-lg border-none bg-transparent cursor-pointer transition-colors duration-150 hover:bg-brand-blue-50 hover:text-brand-blue-600 dark:hover:bg-brand-blue-500/15 dark:hover:text-brand-blue-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
+                  </path>
+                </svg>
+                Tailwind Config
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Brand Blue -->
-      <div>
-        <div class="flex items-baseline gap-3 mb-3">
-          <h3 class="font-bold text-lg text-surface-800 capitalize">Brand Blue</h3>
+      <div class="palette-group reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 dark:text-surface-100 capitalize">Brand Blue</h3>
           <span class="text-xs text-surface-400 font-mono">Primary Action</span>
+          <button
+            class="copy-all-btn ml-auto text-xs font-semibold px-2.5 py-1 rounded-lg border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-400 transition-all duration-200 hover:text-brand-blue-600 hover:bg-brand-blue-50 dark:hover:text-brand-blue-400 dark:hover:bg-brand-blue-500/10 flex items-center gap-1.5"
+            title="Copy all Brand Blue colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+              </path>
+            </svg>
+            Copy All
+          </button>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #E8F0FE;" data-class="bg-brand-blue-50" data-hex="#E8F0FE">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -169,9 +286,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">50</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#E8F0FE</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#E8F0FE</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #D2E3FC;" data-class="bg-brand-blue-100" data-hex="#D2E3FC">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -182,9 +300,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">100</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#D2E3FC</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#D2E3FC</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #AECBFA;" data-class="bg-brand-blue-200" data-hex="#AECBFA">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -195,9 +314,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">200</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#AECBFA</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#AECBFA</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #8AB4F8;" data-class="bg-brand-blue-300" data-hex="#8AB4F8">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -208,9 +328,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">300</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#8AB4F8</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#8AB4F8</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #669DF6;" data-class="bg-brand-blue-400" data-hex="#669DF6">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -221,9 +342,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">400</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#669DF6</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#669DF6</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #4285F4;" data-class="bg-brand-blue-500" data-hex="#4285F4">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -234,9 +356,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">500</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#4285F4</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#4285F4</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #1A73E8;" data-class="bg-brand-blue-600" data-hex="#1A73E8">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -247,9 +370,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">600</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#1A73E8</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#1A73E8</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #1967D2;" data-class="bg-brand-blue-700" data-hex="#1967D2">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -260,9 +384,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">700</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#1967D2</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#1967D2</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #185ABC;" data-class="bg-brand-blue-800" data-hex="#185ABC">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -273,9 +398,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">800</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#185ABC</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#185ABC</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #174EA6;" data-class="bg-brand-blue-900" data-hex="#174EA6">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -286,19 +412,44 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">900</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#174EA6</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#174EA6</span>
+          </div>
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
+            style="background-color: #0D3B7A;" data-class="bg-brand-blue-950" data-hex="#0D3B7A">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">950</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#0D3B7A</span>
           </div>
         </div>
       </div>
 
       <!-- Brand Red -->
-      <div>
-        <div class="flex items-baseline gap-3 mb-3">
-          <h3 class="font-bold text-lg text-surface-800 capitalize">Brand Red</h3>
+      <div class="palette-group reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 dark:text-surface-100 capitalize">Brand Red</h3>
           <span class="text-xs text-surface-400 font-mono">Alert / Danger</span>
+          <button
+            class="copy-all-btn ml-auto text-xs font-semibold px-2.5 py-1 rounded-lg border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-400 transition-all duration-200 hover:text-brand-blue-600 hover:bg-brand-blue-50 dark:hover:text-brand-blue-400 dark:hover:bg-brand-blue-500/10 flex items-center gap-1.5"
+            title="Copy all Brand Red colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+              </path>
+            </svg>
+            Copy All
+          </button>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #FCE8E6;" data-class="bg-brand-red-50" data-hex="#FCE8E6">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -309,9 +460,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">50</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#FCE8E6</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#FCE8E6</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #FAD2CF;" data-class="bg-brand-red-100" data-hex="#FAD2CF">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -322,9 +474,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">100</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#FAD2CF</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#FAD2CF</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #F6AEA9;" data-class="bg-brand-red-200" data-hex="#F6AEA9">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -335,9 +488,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">200</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#F6AEA9</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#F6AEA9</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #F28B82;" data-class="bg-brand-red-300" data-hex="#F28B82">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -348,9 +502,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">300</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#F28B82</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#F28B82</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #EE675C;" data-class="bg-brand-red-400" data-hex="#EE675C">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -361,9 +516,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">400</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#EE675C</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#EE675C</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #EA4335;" data-class="bg-brand-red-500" data-hex="#EA4335">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -374,9 +530,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">500</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#EA4335</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#EA4335</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #D93025;" data-class="bg-brand-red-600" data-hex="#D93025">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -387,9 +544,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">600</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#D93025</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#D93025</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #C5221F;" data-class="bg-brand-red-700" data-hex="#C5221F">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -400,9 +558,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">700</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#C5221F</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#C5221F</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #B31412;" data-class="bg-brand-red-800" data-hex="#B31412">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -413,9 +572,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">800</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#B31412</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#B31412</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #A50E0E;" data-class="bg-brand-red-900" data-hex="#A50E0E">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -426,19 +586,44 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">900</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#A50E0E</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#A50E0E</span>
+          </div>
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
+            style="background-color: #7A0808;" data-class="bg-brand-red-950" data-hex="#7A0808">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">950</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#7A0808</span>
           </div>
         </div>
       </div>
 
       <!-- Brand Yellow -->
-      <div>
-        <div class="flex items-baseline gap-3 mb-3">
-          <h3 class="font-bold text-lg text-surface-800 capitalize">Brand Yellow</h3>
+      <div class="palette-group reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 dark:text-surface-100 capitalize">Brand Yellow</h3>
           <span class="text-xs text-surface-400 font-mono">Warning / Premium</span>
+          <button
+            class="copy-all-btn ml-auto text-xs font-semibold px-2.5 py-1 rounded-lg border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-400 transition-all duration-200 hover:text-brand-blue-600 hover:bg-brand-blue-50 dark:hover:text-brand-blue-400 dark:hover:bg-brand-blue-500/10 flex items-center gap-1.5"
+            title="Copy all Brand Yellow colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+              </path>
+            </svg>
+            Copy All
+          </button>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #FEF7E0;" data-class="bg-brand-yellow-50" data-hex="#FEF7E0">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -449,9 +634,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">50</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#FEF7E0</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#FEF7E0</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #FEF0B8;" data-class="bg-brand-yellow-100" data-hex="#FEF0B8">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -462,9 +648,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">100</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#FEF0B8</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#FEF0B8</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #FDE293;" data-class="bg-brand-yellow-200" data-hex="#FDE293">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -475,9 +662,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">200</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#FDE293</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#FDE293</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #FDCC6F;" data-class="bg-brand-yellow-300" data-hex="#FDCC6F">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -488,9 +676,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">300</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#FDCC6F</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#FDCC6F</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #FCC934;" data-class="bg-brand-yellow-400" data-hex="#FCC934">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -501,9 +690,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">400</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#FCC934</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#FCC934</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #FBBC05;" data-class="bg-brand-yellow-500" data-hex="#FBBC05">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -514,9 +704,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">500</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#FBBC05</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#FBBC05</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #F9AB00;" data-class="bg-brand-yellow-600" data-hex="#F9AB00">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -527,9 +718,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">600</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#F9AB00</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#F9AB00</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #F29900;" data-class="bg-brand-yellow-700" data-hex="#F29900">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -540,9 +732,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">700</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#F29900</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#F29900</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #EA8600;" data-class="bg-brand-yellow-800" data-hex="#EA8600">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -553,9 +746,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">800</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#EA8600</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#EA8600</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #E37400;" data-class="bg-brand-yellow-900" data-hex="#E37400">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -566,19 +760,44 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">900</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#E37400</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#E37400</span>
+          </div>
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
+            style="background-color: #C45800;" data-class="bg-brand-yellow-950" data-hex="#C45800">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">950</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#C45800</span>
           </div>
         </div>
       </div>
 
       <!-- Brand Green -->
-      <div>
-        <div class="flex items-baseline gap-3 mb-3">
-          <h3 class="font-bold text-lg text-surface-800 capitalize">Brand Green</h3>
+      <div class="palette-group reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 dark:text-surface-100 capitalize">Brand Green</h3>
           <span class="text-xs text-surface-400 font-mono">Success / Growth</span>
+          <button
+            class="copy-all-btn ml-auto text-xs font-semibold px-2.5 py-1 rounded-lg border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-400 transition-all duration-200 hover:text-brand-blue-600 hover:bg-brand-blue-50 dark:hover:text-brand-blue-400 dark:hover:bg-brand-blue-500/10 flex items-center gap-1.5"
+            title="Copy all Brand Green colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+              </path>
+            </svg>
+            Copy All
+          </button>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #E6F4EA;" data-class="bg-brand-green-50" data-hex="#E6F4EA">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -589,9 +808,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">50</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#E6F4EA</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#E6F4EA</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #CEEAD6;" data-class="bg-brand-green-100" data-hex="#CEEAD6">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -602,9 +822,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">100</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#CEEAD6</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#CEEAD6</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #A8DAB5;" data-class="bg-brand-green-200" data-hex="#A8DAB5">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -615,9 +836,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">200</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#A8DAB5</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#A8DAB5</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #81C995;" data-class="bg-brand-green-300" data-hex="#81C995">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -628,9 +850,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">300</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#81C995</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#81C995</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #5BB974;" data-class="bg-brand-green-400" data-hex="#5BB974">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -641,9 +864,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">400</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#5BB974</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#5BB974</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #34A853;" data-class="bg-brand-green-500" data-hex="#34A853">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -654,9 +878,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">500</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#34A853</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#34A853</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #1E8E3E;" data-class="bg-brand-green-600" data-hex="#1E8E3E">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -667,9 +892,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">600</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#1E8E3E</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#1E8E3E</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #188038;" data-class="bg-brand-green-700" data-hex="#188038">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -680,9 +906,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">700</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#188038</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#188038</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #137333;" data-class="bg-brand-green-800" data-hex="#137333">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -693,9 +920,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">800</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#137333</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#137333</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #0D652D;" data-class="bg-brand-green-900" data-hex="#0D652D">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -706,19 +934,44 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">900</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#0D652D</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#0D652D</span>
+          </div>
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
+            style="background-color: #064A1F;" data-class="bg-brand-green-950" data-hex="#064A1F">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">950</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#064A1F</span>
           </div>
         </div>
       </div>
 
       <!-- Surface (Slate) -->
-      <div>
-        <div class="flex items-baseline gap-3 mb-3">
-          <h3 class="font-bold text-lg text-surface-800 capitalize">Surface (Slate)</h3>
+      <div class="palette-group reveal">
+        <div class="flex items-center gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 dark:text-surface-100 capitalize">Surface Slate</h3>
           <span class="text-xs text-surface-400 font-mono">Neutrals / Text</span>
+          <button
+            class="copy-all-btn ml-auto text-xs font-semibold px-2.5 py-1 rounded-lg border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-400 transition-all duration-200 hover:text-brand-blue-600 hover:bg-brand-blue-50 dark:hover:text-brand-blue-400 dark:hover:bg-brand-blue-500/10 flex items-center gap-1.5"
+            title="Copy all Surface colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+              </path>
+            </svg>
+            Copy All
+          </button>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #F8FAFC;" data-class="bg-surface-50" data-hex="#F8FAFC">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -729,9 +982,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">50</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#F8FAFC</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#F8FAFC</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #F1F5F9;" data-class="bg-surface-100" data-hex="#F1F5F9">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -742,9 +996,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">100</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#F1F5F9</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#F1F5F9</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #E2E8F0;" data-class="bg-surface-200" data-hex="#E2E8F0">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -755,9 +1010,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">200</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#E2E8F0</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#E2E8F0</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #CBD5E1;" data-class="bg-surface-300" data-hex="#CBD5E1">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -768,9 +1024,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">300</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#CBD5E1</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#CBD5E1</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #94A3B8;" data-class="bg-surface-400" data-hex="#94A3B8">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -781,9 +1038,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-surface-900 z-10">400</span>
-            <span class="font-mono text-[10px] text-surface-500 z-10">#94A3B8</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-surface-500 z-10">#94A3B8</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #64748B;" data-class="bg-surface-500" data-hex="#64748B">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -794,9 +1052,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">500</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#64748B</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#64748B</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #475569;" data-class="bg-surface-600" data-hex="#475569">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -807,9 +1066,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">600</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#475569</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#475569</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #334155;" data-class="bg-surface-700" data-hex="#334155">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -820,9 +1080,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">700</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#334155</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#334155</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #1E293B;" data-class="bg-surface-800" data-hex="#1E293B">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -833,9 +1094,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">800</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#1E293B</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#1E293B</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #0F172A;" data-class="bg-surface-900" data-hex="#0F172A">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -846,9 +1108,10 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">900</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#0F172A</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#0F172A</span>
           </div>
-          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+          <div
+            class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-xl hover:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
             style="background-color: #020617;" data-class="bg-surface-950" data-hex="#020617">
             <div
               class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -859,35 +1122,37 @@
               </svg>
             </div>
             <span class="font-bold text-xs text-white z-10">950</span>
-            <span class="font-mono text-[10px] text-white/70 z-10">#020617</span>
+            <span class="font-mono text-[8px] whitespace-nowrap text-white/70 z-10">#020617</span>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- SECTION 3: LIVE DESIGN EXAMPLE (LIGHT) -->
     <section id="example" class="pt-12 border-t border-surface-200 mb-16 md:mb-24">
-      <div class="mb-8 md:mb-10 text-center md:text-left">
+      <div class="mb-8 md:mb-10 text-center md:text-left reveal">
         <h2 class="text-2xl md:text-3xl font-extrabold mb-4 tracking-tight">Live Component Example (Light)</h2>
-        <p class="text-surface-500 text-base md:text-lg">A "Course Dashboard" layout demonstrating the harmony between
+        <p class="text-surface-500 dark:text-surface-400 text-base md:text-lg">A "Course Dashboard" layout demonstrating
+          the harmony between
           neutrals and
           brand colors.</p>
       </div>
 
       <!-- MOCKUP WRAPPER -->
-      <div class="rounded-3xl overflow-hidden shadow-2xl border border-surface-200 bg-surface-50">
+      <div class="rounded-3xl overflow-hidden shadow-2xl border border-surface-200 bg-surface-50 reveal">
 
         <!-- Navbar Area -->
         <div class="bg-white border-b border-surface-200 p-4 flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-brand-blue-600 rounded-lg flex items-center justify-center text-white font-bold">S
-            </div>
+            <img src="/fevicon.svg" class="w-8 h-8" alt="Logo">
             <span class="font-bold text-surface-700">Shikkha Learning</span>
           </div>
           <div class="flex items-center gap-4">
             <span class="text-xs font-bold text-brand-yellow-700 bg-brand-yellow-100 px-2 py-1 rounded">PRO
               MEMBER</span>
-            <div class="w-8 h-8 rounded-full bg-surface-200"></div>
+            <div class="w-8 h-8 rounded-full bg-surface-100">
+              <img src="/fevicon.svg" class="w-8 h-8 p-1" alt="Logo">
+            </div>
           </div>
         </div>
 
@@ -1000,7 +1265,7 @@
 
     <!-- SECTION 4: LIVE COMPONENT EXAMPLE (DARK) -->
     <section id="example-dark" class="pt-12 border-t border-surface-200">
-      <div class="mb-8 md:mb-10 text-center md:text-left">
+      <div class="mb-8 md:mb-10 text-center md:text-left reveal">
         <h2 class="text-2xl md:text-3xl font-extrabold mb-4 tracking-tight">Live Component Example (Dark)</h2>
         <p class="text-surface-500 text-base md:text-lg">A "Coding Workspace" demonstrating how to use <span
             class="font-mono text-sm bg-surface-200 px-1 rounded">surface-800/900</span> for immersive interfaces.</p>
@@ -1103,7 +1368,9 @@
               </div>
               <div class="pl-4">
                 <span class="text-brand-blue-400">if</span>
-                <span class="text-surface-300">(</span>user.isPro<span class="text-surface-300">)</span>
+                <span class="text-surface-300">(</span><span class="text-surface-200">user</span><span
+                  class="text-surface-300">.</span><span class="text-brand-blue-300">isPro</span><span
+                  class="text-surface-300">)</span>
                 <span class="text-surface-300">{</span>
               </div>
               <div class="pl-8">
@@ -1149,11 +1416,21 @@
     </section>
   </main>
 
-  <footer class="bg-surface-50 border-t border-surface-200 py-12 text-center text-surface-400 text-sm">
+  <footer
+    class="bg-surface-50 dark:bg-surface-950 border-t border-surface-200 dark:border-surface-800 py-12 text-center text-surface-400 text-sm">
     <p>&copy; 2026 <a class="text-brand-blue-500 hover:text-brand-blue-600" href="https://shikkha.dev">Shikkha.dev</a>
       Design System. All rights
       reserved.</p>
   </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top"
+    class="back-to-top fixed bottom-8 right-8 w-12 h-12 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-full shadow-lg flex items-center justify-center z-50 transition-all duration-300 opacity-0 translate-y-3 scale-75 pointer-events-none [&.visible]:opacity-100 [&.visible]:translate-y-0 [&.visible]:scale-100 [&.visible]:pointer-events-auto hover:-translate-y-0.5 hover:scale-105 hover:shadow-xl hover:bg-surface-50 dark:hover:bg-surface-800"
+    aria-label="Back to top">
+    <svg class="w-5 h-5 text-surface-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
 
   <!-- Logic to Generate Palette & Copy Colors -->
   <script type="module" src="./src/main.js"></script>

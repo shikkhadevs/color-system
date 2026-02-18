@@ -6,10 +6,15 @@ A professional, high-performance UI design system and color palette management t
 
 - **Static Performance**: Entire palette is rendered statically to eliminate layout shifts (CLS).
 - **Modern Tech Stack**: Built with Tailwind CSS v4 and Vite for lightning-fast development and optimized production builds.
-- **Interactive Swatches**: Double-click any color swatch to copy its **Hex code** to your clipboard.
-- **Visual Toast Feedback**: Instant feedback when a color is copied.
+- **Single-Click Copy**: Click any swatch to instantly copy its color value to clipboard.
+- **Format Toggle**: Switch between **HEX**, **RGB**, **HSL**, and **Tailwind** class formats with one click.
+- **Copy All**: Export an entire palette row (e.g., all Brand Blue shades) at once.
+- **Keyboard Navigation**: Use arrow keys to navigate swatches, Enter/Space to copy, Escape to blur.
+- **Scroll Spy Navigation**: Active section highlighting in the nav bar as you scroll.
+- **Scroll Animations**: Smooth fade-in reveals with staggered children for a premium feel.
+- **Back-to-Top**: Floating button that appears after scrolling past the first section.
 - **Responsive Design**: Fully optimized for mobile, tablet, and desktop viewports.
-- **Professional Aesthetics**: Minimalist, premium UI with smooth micro-interactions.
+- **Accessibility**: Reduced-motion support and ARIA labels for assistive tech.
 
 ## 🛠️ Getting Started
 
@@ -44,9 +49,9 @@ A professional, high-performance UI design system and color palette management t
 ## 📂 Project Structure
 
 - `index.html`: Main entry point with static palette implementation.
-- `src/main.js`: Handles interactivity (copy functionality, mobile menu).
-- `src/style.css`: Tailwind configuration and custom theme variables.
-- `public/`: Static assets (favicon, etc.).
+- `src/main.js`: All interactivity — copy, format toggle, scroll spy, keyboard nav, back-to-top.
+- `src/style.css`: Tailwind configuration, custom theme, animations, and micro-interactions.
+- `public/`: Static assets (favicon, OG image).
 
 ## 📝 License
 
