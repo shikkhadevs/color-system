@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "system-ui", "sans-serif";
+  --font-mono: "JetBrains Mono", "Fira Code", "monospace";
+
+  --color-brand-blue-50: #E8F0FE;
+  --color-brand-blue-100: #D2E3FC;
+  --color-brand-blue-200: #AECBFA;
+  --color-brand-blue-300: #8AB4F8;
+  --color-brand-blue-400: #669DF6;
+  --color-brand-blue-500: #4285F4;
+  --color-brand-blue-600: #1A73E8;
+  --color-brand-blue-700: #1967D2;
+  --color-brand-blue-800: #185ABC;
+  --color-brand-blue-900: #174EA6;
+
+  --color-brand-red-50: #FCE8E6;
+  --color-brand-red-100: #FAD2CF;
+  --color-brand-red-200: #F6AEA9;
+  --color-brand-red-300: #F28B82;
+  --color-brand-red-400: #EE675C;
+  --color-brand-red-500: #EA4335;
+  --color-brand-red-600: #D93025;
+  --color-brand-red-700: #C5221F;
+  --color-brand-red-800: #B31412;
+  --color-brand-red-900: #A50E0E;
+
+  --color-brand-yellow-50: #FEF7E0;
+  --color-brand-yellow-100: #FEF0B8;
+  --color-brand-yellow-200: #FDE293;
+  --color-brand-yellow-300: #FDCC6F;
+  --color-brand-yellow-400: #FCC934;
+  --color-brand-yellow-500: #FBBC05;
+  --color-brand-yellow-600: #F9AB00;
+  --color-brand-yellow-700: #F29900;
+  --color-brand-yellow-800: #EA8600;
+  --color-brand-yellow-900: #E37400;
+
+  --color-brand-green-50: #E6F4EA;
+  --color-brand-green-100: #CEEAD6;
+  --color-brand-green-200: #A8DAB5;
+  --color-brand-green-300: #81C995;
+  --color-brand-green-400: #5BB974;
+  --color-brand-green-500: #34A853;
+  --color-brand-green-600: #1E8E3E;
+  --color-brand-green-700: #188038;
+  --color-brand-green-800: #137333;
+  --color-brand-green-900: #0D652D;
+
+  --color-surface-50: #F8FAFC;
+  --color-surface-100: #F1F5F9;
+  --color-surface-200: #E2E8F0;
+  --color-surface-300: #CBD5E1;
+  --color-surface-400: #94A3B8;
+  --color-surface-500: #64748B;
+  --color-surface-600: #475569;
+  --color-surface-700: #334155;
+  --color-surface-800: #1E293B;
+  --color-surface-900: #0F172A;
+  --color-surface-950: #020617;
+}

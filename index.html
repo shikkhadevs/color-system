@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shikkha.dev | Professional UI Design System</title>
+  <meta name="description"
+    content="Shikkha.dev: A professional, high-performance UI design system based on premium tailwind colors and minimalist aesthetics.">
+  <link rel="icon" type="image/svg+xml" href="/fevicon.svg">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shikkha.dev/">
+  <meta property="og:title" content="Shikkha.dev | Professional UI Design System">
+  <meta property="og:description"
+    content="A premium, high-performance UI design system based on professional brand colors and minimalist aesthetics.">
+  <meta property="og:image" content="/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://shikkha.dev/">
+  <meta property="twitter:title" content="Shikkha.dev | Professional UI Design System">
+  <meta property="twitter:description"
+    content="A premium, high-performance UI design system based on professional brand colors and minimalist aesthetics.">
+  <meta property="twitter:image" content="/og-image.png">
+</head>
+
+<body class="bg-surface-50 text-surface-900 antialiased selection:bg-brand-blue-100 selection:text-brand-blue-900">
+
+  <!-- Toast Notification -->
+  <div id="toast"
+    class="fixed hidden bottom-10 left-1/2 -translate-x-1/2 bg-surface-900 text-white px-6 py-3 rounded-full shadow-2xl z-50 text-sm font-medium items-center gap-3">
+    <svg class="w-4 h-4 text-brand-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
+    <span id="toast-msg">Class copied to clipboard!</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-surface-200 px-6 py-4 sticky top-0 z-40 bg-opacity-90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-2 font-bold text-xl">
+        <!-- Mini Logo -->
+        <div class="relative w-6 h-6 shrink-0 mr-1">
+          <div class="absolute top-0 left-0 w-3 h-3 rounded-full bg-brand-yellow-500 transform -translate-y-0.5"></div>
+          <div class="absolute top-1.5 right-0 w-3.5 h-3.5 rounded-full bg-brand-red-500 transform translate-x-0.5">
+          </div>
+          <div class="absolute bottom-0 left-0 w-4 h-4 rounded-tl bg-brand-blue-500"></div>
+          <div class="absolute bottom-0 right-0 w-4 h-3.5 rounded-br bg-brand-green-500 transform translate-y-0.5">
+          </div>
+        </div>
+        <span>Shikkha<span class="text-surface-400">.dev</span></span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-sm font-semibold text-surface-500 items-center">
+        <a href="#rules" class="hover:text-brand-blue-600 transition-colors">Usage Rules</a>
+        <a href="#palette" class="hover:text-brand-blue-600 transition-colors">Full Palette</a>
+        <a href="#example"
+          class="bg-brand-blue-50 text-brand-blue-600 px-4 py-2 rounded-lg hover:bg-brand-blue-100 transition-colors">Live
+          Example</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-surface-500 hover:text-brand-blue-600 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Container -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-surface-100 bg-white/95 backdrop-blur-md">
+      <div class="flex flex-col p-4 space-y-4 text-sm font-semibold text-surface-600">
+        <a href="#rules" class="mobile-nav-link hover:text-brand-blue-600 transition-colors">Usage Rules</a>
+        <a href="#palette" class="mobile-nav-link hover:text-brand-blue-600 transition-colors">Full Palette</a>
+        <a href="#example"
+          class="mobile-nav-link bg-brand-blue-50 text-brand-blue-600 px-4 py-3 rounded-xl hover:bg-brand-blue-100 transition-colors">Live
+          Example</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-16">
+
+    <!-- SECTION 1: USAGE STRATEGY -->
+    <section id="rules" class="mb-16 md:mb-24">
+      <div class="max-w-3xl mb-8 md:mb-12 text-center md:text-left">
+        <h2 class="text-2xl md:text-3xl font-extrabold mb-4 tracking-tight">The Usage Strategy</h2>
+        <p class="text-surface-500 text-base md:text-lg">We've introduced a <span
+            class="font-mono text-sm bg-surface-200 px-1 rounded">surface</span> scale for UI structure. This ensures
+          our brand colors (Blue, Red, Yellow, Green) are reserved for meaning and interaction.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Primary Action -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-sm border border-surface-200 group hover:border-brand-blue-200 transition-colors">
+          <div
+            class="w-12 h-12 bg-brand-blue-500 rounded-xl mb-4 shadow-lg shadow-brand-blue-100 swatch flex items-center justify-center text-white"
+            data-class="bg-brand-blue-500" data-hex="#4285F4">
+            <span class="font-mono text-xs opacity-0 group-hover:opacity-100">500</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-surface-800">Primary & Brand</h3>
+          <p class="text-sm text-surface-500 leading-relaxed">Use <b>Blue-500</b> for primary buttons and active links.
+            Use <b>Blue-50</b> for hover backgrounds.</p>
+        </div>
+
+        <!-- Success -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-sm border border-surface-200 group hover:border-brand-green-200 transition-colors">
+          <div
+            class="w-12 h-12 bg-brand-green-500 rounded-xl mb-4 shadow-lg shadow-brand-green-100 swatch flex items-center justify-center text-white"
+            data-class="bg-brand-green-500" data-hex="#34A853">
+            <span class="font-mono text-xs opacity-0 group-hover:opacity-100">500</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-surface-800">Success & Growth</h3>
+          <p class="text-sm text-surface-500 leading-relaxed">Use <b>Green-500</b> for completion states, verification
+            badges, and positive trends.</p>
+        </div>
+
+        <!-- Warning -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-sm border border-surface-200 group hover:border-brand-yellow-200 transition-colors">
+          <div
+            class="w-12 h-12 bg-brand-yellow-500 rounded-xl mb-4 shadow-lg shadow-brand-yellow-100 swatch flex items-center justify-center text-white"
+            data-class="bg-brand-yellow-500" data-hex="#FBBC05">
+            <span class="font-mono text-xs opacity-0 group-hover:opacity-100">500</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-surface-800">Attention & Premium</h3>
+          <p class="text-sm text-surface-500 leading-relaxed">Use <b>Yellow-500</b> for warnings, "Pro" features, or
+            items requiring user attention.</p>
+        </div>
+
+        <!-- Surface/Neutral -->
+        <div
+          class="bg-white p-6 rounded-2xl shadow-sm border border-surface-200 group hover:border-surface-300 transition-colors">
+          <div
+            class="w-12 h-12 bg-surface-900 rounded-xl mb-4 shadow-lg shadow-surface-200 swatch flex items-center justify-center text-white"
+            data-class="bg-surface-900" data-hex="#0F172A">
+            <span class="font-mono text-xs opacity-0 group-hover:opacity-100">900</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-surface-800">Structure & Text</h3>
+          <p class="text-sm text-surface-500 leading-relaxed">Use <b>Surface-50 to 900</b> for everything else. Text
+            should be 600-900, never pure black.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE PALETTE GRID -->
+    <div id="palette-container" class="space-y-10">
+      <!-- Brand Blue -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 capitalize">Brand Blue</h3>
+          <span class="text-xs text-surface-400 font-mono">Primary Action</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #E8F0FE;" data-class="bg-brand-blue-50" data-hex="#E8F0FE">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">50</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#E8F0FE</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #D2E3FC;" data-class="bg-brand-blue-100" data-hex="#D2E3FC">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">100</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#D2E3FC</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #AECBFA;" data-class="bg-brand-blue-200" data-hex="#AECBFA">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">200</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#AECBFA</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #8AB4F8;" data-class="bg-brand-blue-300" data-hex="#8AB4F8">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">300</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#8AB4F8</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #669DF6;" data-class="bg-brand-blue-400" data-hex="#669DF6">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">400</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#669DF6</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #4285F4;" data-class="bg-brand-blue-500" data-hex="#4285F4">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">500</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#4285F4</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #1A73E8;" data-class="bg-brand-blue-600" data-hex="#1A73E8">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">600</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#1A73E8</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #1967D2;" data-class="bg-brand-blue-700" data-hex="#1967D2">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">700</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#1967D2</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #185ABC;" data-class="bg-brand-blue-800" data-hex="#185ABC">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">800</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#185ABC</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #174EA6;" data-class="bg-brand-blue-900" data-hex="#174EA6">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">900</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#174EA6</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand Red -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 capitalize">Brand Red</h3>
+          <span class="text-xs text-surface-400 font-mono">Alert / Danger</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #FCE8E6;" data-class="bg-brand-red-50" data-hex="#FCE8E6">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">50</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#FCE8E6</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #FAD2CF;" data-class="bg-brand-red-100" data-hex="#FAD2CF">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">100</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#FAD2CF</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #F6AEA9;" data-class="bg-brand-red-200" data-hex="#F6AEA9">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">200</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#F6AEA9</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #F28B82;" data-class="bg-brand-red-300" data-hex="#F28B82">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">300</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#F28B82</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #EE675C;" data-class="bg-brand-red-400" data-hex="#EE675C">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">400</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#EE675C</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #EA4335;" data-class="bg-brand-red-500" data-hex="#EA4335">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">500</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#EA4335</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #D93025;" data-class="bg-brand-red-600" data-hex="#D93025">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">600</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#D93025</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #C5221F;" data-class="bg-brand-red-700" data-hex="#C5221F">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">700</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#C5221F</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #B31412;" data-class="bg-brand-red-800" data-hex="#B31412">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">800</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#B31412</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #A50E0E;" data-class="bg-brand-red-900" data-hex="#A50E0E">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">900</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#A50E0E</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand Yellow -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 capitalize">Brand Yellow</h3>
+          <span class="text-xs text-surface-400 font-mono">Warning / Premium</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #FEF7E0;" data-class="bg-brand-yellow-50" data-hex="#FEF7E0">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">50</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#FEF7E0</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #FEF0B8;" data-class="bg-brand-yellow-100" data-hex="#FEF0B8">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">100</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#FEF0B8</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #FDE293;" data-class="bg-brand-yellow-200" data-hex="#FDE293">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">200</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#FDE293</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #FDCC6F;" data-class="bg-brand-yellow-300" data-hex="#FDCC6F">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">300</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#FDCC6F</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #FCC934;" data-class="bg-brand-yellow-400" data-hex="#FCC934">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">400</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#FCC934</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #FBBC05;" data-class="bg-brand-yellow-500" data-hex="#FBBC05">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">500</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#FBBC05</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #F9AB00;" data-class="bg-brand-yellow-600" data-hex="#F9AB00">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">600</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#F9AB00</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #F29900;" data-class="bg-brand-yellow-700" data-hex="#F29900">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">700</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#F29900</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #EA8600;" data-class="bg-brand-yellow-800" data-hex="#EA8600">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">800</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#EA8600</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #E37400;" data-class="bg-brand-yellow-900" data-hex="#E37400">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">900</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#E37400</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand Green -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 capitalize">Brand Green</h3>
+          <span class="text-xs text-surface-400 font-mono">Success / Growth</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #E6F4EA;" data-class="bg-brand-green-50" data-hex="#E6F4EA">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">50</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#E6F4EA</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #CEEAD6;" data-class="bg-brand-green-100" data-hex="#CEEAD6">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">100</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#CEEAD6</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #A8DAB5;" data-class="bg-brand-green-200" data-hex="#A8DAB5">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">200</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#A8DAB5</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #81C995;" data-class="bg-brand-green-300" data-hex="#81C995">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">300</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#81C995</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #5BB974;" data-class="bg-brand-green-400" data-hex="#5BB974">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">400</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#5BB974</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #34A853;" data-class="bg-brand-green-500" data-hex="#34A853">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">500</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#34A853</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #1E8E3E;" data-class="bg-brand-green-600" data-hex="#1E8E3E">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">600</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#1E8E3E</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #188038;" data-class="bg-brand-green-700" data-hex="#188038">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">700</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#188038</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #137333;" data-class="bg-brand-green-800" data-hex="#137333">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">800</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#137333</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #0D652D;" data-class="bg-brand-green-900" data-hex="#0D652D">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">900</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#0D652D</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Surface (Slate) -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <h3 class="font-bold text-lg text-surface-800 capitalize">Surface (Slate)</h3>
+          <span class="text-xs text-surface-400 font-mono">Neutrals / Text</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-3">
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #F8FAFC;" data-class="bg-surface-50" data-hex="#F8FAFC">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">50</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#F8FAFC</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #F1F5F9;" data-class="bg-surface-100" data-hex="#F1F5F9">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">100</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#F1F5F9</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #E2E8F0;" data-class="bg-surface-200" data-hex="#E2E8F0">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">200</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#E2E8F0</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #CBD5E1;" data-class="bg-surface-300" data-hex="#CBD5E1">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">300</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#CBD5E1</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #94A3B8;" data-class="bg-surface-400" data-hex="#94A3B8">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-surface-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-surface-900 z-10">400</span>
+            <span class="font-mono text-[10px] text-surface-500 z-10">#94A3B8</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #64748B;" data-class="bg-surface-500" data-hex="#64748B">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">500</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#64748B</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #475569;" data-class="bg-surface-600" data-hex="#475569">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">600</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#475569</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #334155;" data-class="bg-surface-700" data-hex="#334155">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">700</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#334155</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #1E293B;" data-class="bg-surface-800" data-hex="#1E293B">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">800</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#1E293B</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #0F172A;" data-class="bg-surface-900" data-hex="#0F172A">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">900</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#0F172A</span>
+          </div>
+          <div class="swatch h-24 rounded-lg flex flex-col justify-end p-3 relative overflow-hidden group"
+            style="background-color: #020617;" data-class="bg-surface-950" data-hex="#020617">
+            <div
+              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+              </svg>
+            </div>
+            <span class="font-bold text-xs text-white z-10">950</span>
+            <span class="font-mono text-[10px] text-white/70 z-10">#020617</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: LIVE DESIGN EXAMPLE (LIGHT) -->
+    <section id="example" class="pt-12 border-t border-surface-200 mb-16 md:mb-24">
+      <div class="mb-8 md:mb-10 text-center md:text-left">
+        <h2 class="text-2xl md:text-3xl font-extrabold mb-4 tracking-tight">Live Component Example (Light)</h2>
+        <p class="text-surface-500 text-base md:text-lg">A "Course Dashboard" layout demonstrating the harmony between
+          neutrals and
+          brand colors.</p>
+      </div>
+
+      <!-- MOCKUP WRAPPER -->
+      <div class="rounded-3xl overflow-hidden shadow-2xl border border-surface-200 bg-surface-50">
+
+        <!-- Navbar Area -->
+        <div class="bg-white border-b border-surface-200 p-4 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-brand-blue-600 rounded-lg flex items-center justify-center text-white font-bold">S
+            </div>
+            <span class="font-bold text-surface-700">Shikkha Learning</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold text-brand-yellow-700 bg-brand-yellow-100 px-2 py-1 rounded">PRO
+              MEMBER</span>
+            <div class="w-8 h-8 rounded-full bg-surface-200"></div>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row">
+          <!-- Sidebar -->
+          <div class="w-full md:w-64 bg-surface-50 border-r border-surface-200 p-4 hidden md:block">
+            <div class="space-y-1">
+              <div
+                class="flex items-center gap-3 px-3 py-2 bg-brand-blue-50 text-brand-blue-700 rounded-lg font-medium cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                  </path>
+                </svg>
+                Dashboard
+              </div>
+              <div
+                class="flex items-center gap-3 px-3 py-2 text-surface-500 hover:bg-surface-100 rounded-lg font-medium cursor-pointer transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                  </path>
+                </svg>
+                My Courses
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="px-3 text-xs font-bold text-surface-400 uppercase tracking-wider mb-2">Upcoming Deadlines</h4>
+              <div class="px-3 py-2 border border-brand-red-200 bg-brand-red-50 rounded-lg">
+                <p class="text-xs text-brand-red-800 font-bold mb-1">React Finals</p>
+                <p class="text-[10px] text-brand-red-600">Due in 2 hours</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content -->
+          <div class="flex-1 p-8 bg-white">
+            <div class="max-w-3xl">
+              <h1 class="text-3xl font-bold text-surface-900 mb-2">Welcome back, Student</h1>
+              <p class="text-surface-500 mb-8">You're making great progress. Pick up where you left off.</p>
+
+              <!-- Progress Card -->
+              <div class="bg-surface-900 rounded-2xl p-8 text-white mb-10 shadow-xl relative overflow-hidden group">
+                <div
+                  class="absolute top-0 right-0 p-32 bg-brand-blue-500 rounded-full blur-3xl opacity-20 -mr-16 -mt-16 pointer-events-none">
+                </div>
+
+                <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                  <div>
+                    <div class="flex items-center gap-2 mb-2">
+                      <span
+                        class="bg-brand-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">On
+                        Track</span>
+                      <span class="text-brand-blue-200 text-sm font-medium">Fullstack Development</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold mb-1">Module 4: Advanced APIs</h2>
+                    <p class="text-surface-400 text-sm">Next lesson: Authentication Strategies</p>
+                  </div>
+                  <button
+                    class="bg-brand-blue-500 hover:bg-brand-blue-400 text-white px-6 py-3 rounded-xl font-bold transition shadow-lg shadow-brand-blue-900/50 w-full lg:w-auto">
+                    Resume Learning
+                  </button>
+                </div>
+
+                <div class="mt-8">
+                  <div class="flex justify-between text-xs font-mono text-surface-400 mb-2">
+                    <span>PROGRESS</span>
+                    <span class="text-brand-green-400">75%</span>
+                  </div>
+                  <div class="h-2 w-full bg-surface-700 rounded-full overflow-hidden">
+                    <div class="h-full bg-linear-to-r from-brand-blue-500 to-brand-green-500 w-3/4"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="border border-surface-200 rounded-xl p-5 hover:border-brand-blue-300 transition cursor-pointer">
+                  <div
+                    class="w-10 h-10 bg-brand-yellow-100 text-brand-yellow-700 rounded-lg flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-surface-800">Review Quiz</h3>
+                  <p class="text-sm text-surface-500 mt-1">Earn the "Master" badge.</p>
+                </div>
+                <div
+                  class="border border-surface-200 rounded-xl p-5 hover:border-brand-green-300 transition cursor-pointer">
+                  <div
+                    class="w-10 h-10 bg-brand-green-100 text-brand-green-700 rounded-lg flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="font-bold text-surface-800">Certificates</h3>
+                  <p class="text-sm text-surface-500 mt-1">2 Available for download.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: LIVE COMPONENT EXAMPLE (DARK) -->
+    <section id="example-dark" class="pt-12 border-t border-surface-200">
+      <div class="mb-8 md:mb-10 text-center md:text-left">
+        <h2 class="text-2xl md:text-3xl font-extrabold mb-4 tracking-tight">Live Component Example (Dark)</h2>
+        <p class="text-surface-500 text-base md:text-lg">A "Coding Workspace" demonstrating how to use <span
+            class="font-mono text-sm bg-surface-200 px-1 rounded">surface-800/900</span> for immersive interfaces.</p>
+      </div>
+
+      <!-- DARK MOCKUP WRAPPER -->
+      <div class="rounded-3xl overflow-hidden shadow-2xl border border-surface-800 bg-surface-950">
+
+        <!-- Dark Header -->
+        <div class="bg-surface-900 border-b border-surface-800 p-3 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="flex gap-2">
+              <div class="w-3 h-3 rounded-full bg-brand-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-brand-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-brand-green-500"></div>
+            </div>
+            <div class="flex items-center gap-2 text-surface-400 text-sm font-mono border-l border-surface-700 pl-4">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+              </svg>
+              <span>project-shikkha-web</span>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <button
+              class="hidden sm:flex bg-surface-800 hover:bg-surface-700 text-surface-300 px-3 py-1.5 rounded text-xs font-bold transition items-center gap-2 border border-surface-700">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              Settings
+            </button>
+            <button
+              class="bg-brand-green-600 hover:bg-brand-green-500 text-white px-3 py-1.5 rounded text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-brand-green-900/50">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Run<span class="hidden xs:inline"> Build</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row h-96">
+          <!-- Dark Sidebar -->
+          <div class="w-full md:w-56 bg-surface-900 border-r border-surface-800 flex flex-col md:flex">
+            <div class="px-4 py-3 text-xs font-bold text-surface-500 uppercase tracking-wider">Explorer</div>
+            <div class="flex flex-col text-sm font-mono text-surface-400">
+              <div class="px-4 py-1 hover:bg-surface-800 cursor-pointer flex items-center gap-2">
+                <span class="text-surface-600">v</span> src
+              </div>
+              <div
+                class="px-4 py-1 hover:bg-surface-800 cursor-pointer flex items-center gap-2 pl-8 text-brand-blue-400 bg-surface-800 border-l-2 border-brand-blue-500">
+                <span class="text-brand-yellow-400">JS</span> App.js
+              </div>
+              <div class="px-4 py-1 hover:bg-surface-800 cursor-pointer flex items-center gap-2 pl-8">
+                <span class="text-brand-blue-400">CSS</span> main.css
+              </div>
+              <div class="px-4 py-1 hover:bg-surface-800 cursor-pointer flex items-center gap-2 pl-8">
+                <span class="text-brand-red-400">HTML</span> index.html
+              </div>
+            </div>
+          </div>
+
+          <!-- Dark Editor -->
+          <div class="flex-1 bg-surface-950 p-6 font-mono text-sm overflow-hidden relative">
+            <div class="absolute top-0 right-0 p-4 text-xs text-surface-600">JavaScript</div>
+
+            <!-- Fake Code Block -->
+            <div class="space-y-1">
+              <div class="text-surface-500">// Initialize Shikkha Learning Modules</div>
+              <div>
+                <span class="text-brand-blue-400">import</span>
+                <span class="text-brand-yellow-300">{ Course, Student }</span>
+                <span class="text-brand-blue-400">from</span>
+                <span class="text-brand-green-400">'@shikkha/core'</span>;
+              </div>
+              <br>
+              <div>
+                <span class="text-brand-blue-400">const</span>
+                <span class="text-brand-yellow-300">startLearning</span>
+                <span class="text-surface-200">=</span>
+                <span class="text-brand-blue-400">async</span>
+                <span class="text-surface-300">()</span>
+                <span class="text-brand-blue-400">=></span>
+                <span class="text-surface-300">{</span>
+              </div>
+              <div class="pl-4">
+                <span class="text-brand-blue-400">const</span>
+                <span class="text-surface-200">user</span>
+                <span class="text-surface-200">=</span>
+                <span class="text-brand-blue-400">await</span>
+                <span class="text-brand-yellow-300">Student</span>.<span class="text-brand-blue-300">auth</span><span
+                  class="text-surface-300">()</span>;
+              </div>
+              <div class="pl-4">
+                <span class="text-brand-blue-400">if</span>
+                <span class="text-surface-300">(</span>user.isPro<span class="text-surface-300">)</span>
+                <span class="text-surface-300">{</span>
+              </div>
+              <div class="pl-8">
+                <span class="text-brand-yellow-300">console</span>.<span class="text-brand-blue-300">log</span><span
+                  class="text-surface-300">(</span><span class="text-brand-green-400">"Welcome back to Pro
+                  mode!"</span><span class="text-surface-300">)</span>;
+              </div>
+              <div class="pl-4 text-surface-300">}</div>
+              <div class="text-surface-300">};</div>
+            </div>
+
+            <!-- Cursor Animation -->
+            <div class="mt-2 w-2 h-4 bg-brand-blue-500 animate-pulse inline-block"></div>
+          </div>
+
+          <!-- Terminal Panel Mockup -->
+          <div class="w-full md:w-72 bg-surface-900 border-l border-surface-800 p-4 flex flex-col md:flex">
+            <div
+              class="text-xs font-bold text-surface-400 uppercase tracking-wider mb-3 pb-2 border-b border-surface-800 flex justify-between">
+              <span>Terminal</span>
+              <span class="text-brand-green-500">● Online</span>
+            </div>
+            <div class="font-mono text-xs space-y-2">
+              <div class="text-surface-400">$ npm run dev</div>
+              <div class="text-surface-200">> shikkha-web@1.0.0 dev</div>
+              <div class="text-surface-200">> vite</div>
+              <br>
+              <div class="text-brand-green-400"> ➜ Local: http://localhost:3000/</div>
+              <div class="text-surface-400"> ➜ Network: use --host to expose</div>
+              <br>
+              <div class="flex gap-2 p-2 bg-surface-950 rounded border border-surface-800 mt-4">
+                <span class="text-brand-blue-400">ℹ</span>
+                <span class="text-surface-400">HMR connected.</span>
+              </div>
+              <div class="flex gap-2 p-2 bg-brand-yellow-900/20 rounded border border-brand-yellow-900/50">
+                <span class="text-brand-yellow-500">⚠</span>
+                <span class="text-brand-yellow-200">2 warnings found.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-surface-50 border-t border-surface-200 py-12 text-center text-surface-400 text-sm">
+    <p>&copy; 2026 <a class="text-brand-blue-500 hover:text-brand-blue-600" href="https://shikkha.dev">Shikkha.dev</a>
+      Design System. All rights
+      reserved.</p>
+  </footer>
+
+  <!-- Logic to Generate Palette & Copy Colors -->
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
