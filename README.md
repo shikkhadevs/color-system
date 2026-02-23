@@ -1,4 +1,4 @@
-# Shikkha Color System
+# Shikkha IT Limited Color System
 
 A professional, high-performance UI design system and color palette management tool. Shikkha Color System provides a curated set of harmonious color scales designed for modern web applications.
 
